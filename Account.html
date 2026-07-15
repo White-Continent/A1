@@ -6,16 +6,15 @@
   <title>Northgate | Login &amp; Registration</title>
   <meta name="description" content="Northgate Security Guard Licensing - Login, Register, and manage your account.">
 
-  <!-- Google Font: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="Account.css">
+  <link rel="stylesheet" href="./Account.css">
+  <script src="./Account.js" defer></script>
 </head>
 <body>
 
-  <!-- ===================== NAVBAR ===================== -->
   <header class="navbar" id="navbar">
     <div class="navbar__container">
       <a href="index.html" class="navbar__logo">
@@ -44,7 +43,6 @@
   </header>
 
   <main>
-    <!-- ===================== HERO SECTION ===================== -->
     <section class="hero">
       <div class="hero__container">
         <h1 class="hero__title">We'll take it from here.</h1>
@@ -55,11 +53,9 @@
       </div>
     </section>
 
-    <!-- ===================== AUTHENTICATION CARD ===================== -->
     <section class="auth-section" id="authCard">
       <div class="auth-card">
 
-        <!-- Tabs -->
         <div class="auth-card__tabs" id="authTabs" role="tablist" aria-label="Authentication options">
           <button class="auth-tab is-active" data-target="login" role="tab" aria-selected="true">Login</button>
           <button class="auth-tab" data-target="register" role="tab" aria-selected="false">Register</button>
@@ -67,7 +63,6 @@
 
         <div class="auth-card__body">
 
-          <!-- ============ LOGIN PANEL ============ -->
           <div class="auth-panel is-active" id="panel-login" data-panel="login">
             <div class="auth-panel__header">
               <h2>Welcome back</h2>
@@ -110,99 +105,144 @@
             </form>
           </div>
 
-          <!-- ============ REGISTER PANEL ============ -->
           <div class="auth-panel" id="panel-register" data-panel="register">
-            <div class="auth-panel__header">
-              <h2>Create your account</h2>
-              <p>Start your Security Guard Licence application today.</p>
+            
+            <div id="register-step-email" class="register-step is-active">
+              <div class="auth-panel__header">
+                <h2>Create your account</h2>
+                <p>Enter your email to verify and start registration.</p>
+              </div>
+              <form class="auth-form" id="registerEmailForm" novalidate>
+                <div class="form-group">
+                  <label for="registerEmail">Email Address</label>
+                  <input type="email" id="registerEmail" name="email" placeholder="you@example.com" required>
+                  <span class="form-error" data-error-for="registerEmail"></span>
+                </div>
+                <button type="submit" class="btn btn--primary btn--block">Send OTP</button>
+                <p class="auth-switch">
+                  Already have an account?
+                  <button type="button" class="link-btn" data-target="login">Log in</button>
+                </p>
+              </form>
             </div>
 
-            <form class="auth-form" id="registerForm" novalidate>
-              <div class="form-row form-row--two">
+            <div id="register-step-otp" class="register-step">
+              <div class="auth-panel__header">
+                <h2>Verify your email</h2>
+                <p>Enter the 6-digit verification code sent to your email.</p>
+              </div>
+              <form class="auth-form" id="registerOtpForm" novalidate>
+                <div class="otp-group" id="regOtpGroup">
+                  <input type="text" inputmode="numeric" maxlength="1" class="otp-input" aria-label="Digit 1" required>
+                  <input type="text" inputmode="numeric" maxlength="1" class="otp-input" aria-label="Digit 2" required>
+                  <input type="text" inputmode="numeric" maxlength="1" class="otp-input" aria-label="Digit 3" required>
+                  <input type="text" inputmode="numeric" maxlength="1" class="otp-input" aria-label="Digit 4" required>
+                  <input type="text" inputmode="numeric" maxlength="1" class="otp-input" aria-label="Digit 5" required>
+                  <input type="text" inputmode="numeric" maxlength="1" class="otp-input" aria-label="Digit 6" required>
+                </div>
+                <span class="form-error" data-error-for="regOtpGroup"></span>
+
+                <button type="submit" class="btn btn--primary btn--block">Verify & Continue</button>
+
+                <p class="auth-switch">
+                  Didn't receive a code?
+                  <button type="button" class="link-btn" id="regResendOtp">Resend OTP</button>
+                </p>
+              </form>
+            </div>
+
+            <div id="register-step-details" class="register-step">
+              <div class="auth-panel__header">
+                <h2>Complete your profile</h2>
+                <p>Fill in your personal and location details below.</p>
+              </div>
+              <form class="auth-form" id="registerDetailsForm" novalidate>
+                
                 <div class="form-group">
-                  <label for="firstName">First Name</label>
-                  <input type="text" id="firstName" name="firstName" placeholder="John" required>
-                  <span class="form-error" data-error-for="firstName"></span>
+                  <label for="verifiedEmailDisplay">Email Address</label>
+                  <div class="input-verified-wrapper">
+                    <input type="email" id="verifiedEmailDisplay" disabled class="input-verified">
+                    <span class="badge-verified">✓ Verified</span>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="lastName">Last Name</label>
-                  <input type="text" id="lastName" name="lastName" placeholder="Smith" required>
-                  <span class="form-error" data-error-for="lastName"></span>
+
+                <div class="form-row form-row--two">
+                  <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" placeholder="John" required>
+                    <span class="form-error" data-error-for="firstName"></span>
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Smith" required>
+                    <span class="form-error" data-error-for="lastName"></span>
+                  </div>
                 </div>
-              </div>
 
-              <div class="form-group">
-                <label for="registerEmail">Email Address</label>
-                <input type="email" id="registerEmail" name="email" placeholder="you@example.com" required>
-                <span class="form-error" data-error-for="registerEmail"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required>
-                <span class="form-error" data-error-for="phone"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="province">Province</label>
-                <select id="province" name="province" required>
-                  <option value="" disabled selected>Select your province</option>
-                  <option value="AB">Alberta</option>
-                  <option value="BC">British Columbia</option>
-                  <option value="MB">Manitoba</option>
-                  <option value="NB">New Brunswick</option>
-                  <option value="NL">Newfoundland and Labrador</option>
-                  <option value="NS">Nova Scotia</option>
-                  <option value="NT">Northwest Territories</option>
-                  <option value="NU">Nunavut</option>
-                  <option value="ON">Ontario</option>
-                  <option value="PE">Prince Edward Island</option>
-                  <option value="QC">Quebec</option>
-                  <option value="SK">Saskatchewan</option>
-                  <option value="YT">Yukon</option>
-                </select>
-                <span class="form-error" data-error-for="province"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="registerPassword">Password</label>
-                <div class="input-with-icon">
-                  <input type="password" id="registerPassword" name="password" placeholder="Create a password" required>
-                  <button type="button" class="toggle-password" data-target="registerPassword" aria-label="Show password">
-                    <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                  </button>
+                <div class="form-row form-row--two">
+                  <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required>
+                    <span class="form-error" data-error-for="phone"></span>
+                  </div>
+                  <div class="form-group">
+                    <label for="province">Province</label>
+                    <select id="province" name="province" required>
+                      <option value="" disabled selected>Select province</option>
+                      <option value="AB">Alberta</option>
+                      <option value="BC">British Columbia</option>
+                      <option value="MB">Manitoba</option>
+                      <option value="NB">New Brunswick</option>
+                      <option value="NL">Newfoundland and Labrador</option>
+                      <option value="NS">Nova Scotia</option>
+                      <option value="NT">Northwest Territories</option>
+                      <option value="NU">Nunavut</option>
+                      <option value="ON">Ontario</option>
+                      <option value="PE">Prince Edward Island</option>
+                      <option value="QC">Quebec</option>
+                      <option value="SK">Saskatchewan</option>
+                      <option value="YT">Yukon</option>
+                    </select>
+                    <span class="form-error" data-error-for="province"></span>
+                  </div>
                 </div>
-                <span class="form-error" data-error-for="registerPassword"></span>
-              </div>
 
-              <div class="form-group">
-                <label for="confirmPassword">Confirm Password</label>
-                <div class="input-with-icon">
-                  <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required>
-                  <button type="button" class="toggle-password" data-target="confirmPassword" aria-label="Show password">
-                    <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                  </button>
+                <div class="form-row form-row--two">
+                  <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <div class="input-with-icon">
+                      <input type="password" id="registerPassword" name="password" placeholder="Min 8 chars" required>
+                      <button type="button" class="toggle-password" data-target="registerPassword" aria-label="Show password">
+                        <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                      </button>
+                    </div>
+                    <span class="form-error" data-error-for="registerPassword"></span>
+                  </div>
+                  <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="input-with-icon">
+                      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required>
+                      <button type="button" class="toggle-password" data-target="confirmPassword" aria-label="Show password">
+                        <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                      </button>
+                    </div>
+                    <span class="form-error" data-error-for="confirmPassword"></span>
+                  </div>
                 </div>
-                <span class="form-error" data-error-for="confirmPassword"></span>
-              </div>
 
-              <label class="checkbox checkbox--terms">
-                <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
-                <span class="checkbox__mark"></span>
-                I accept the <a href="terms.html" target="_blank">Terms &amp; Conditions</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>
-              </label>
-              <span class="form-error" data-error-for="acceptTerms"></span>
+                <label class="checkbox checkbox--terms">
+                  <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
+                  <span class="checkbox__mark"></span>
+                  I accept the <a href="terms.html" target="_blank">Terms &amp; Conditions</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>
+                </label>
+                <span class="form-error" data-error-for="acceptTerms"></span>
 
-              <button type="submit" class="btn btn--primary btn--block">Create Account</button>
+                <button type="submit" class="btn btn--primary btn--block">Complete Registration</button>
+              </form>
+            </div>
 
-              <p class="auth-switch">
-                Already have an account?
-                <button type="button" class="link-btn" data-target="login">Log in</button>
-              </p>
-            </form>
           </div>
 
-          <!-- ============ FORGOT PASSWORD PANEL ============ -->
           <div class="auth-panel" id="panel-forgot" data-panel="forgot">
             <div class="auth-panel__header">
               <h2>Forgot your password?</h2>
@@ -225,7 +265,6 @@
             </form>
           </div>
 
-          <!-- ============ OTP VERIFICATION PANEL ============ -->
           <div class="auth-panel" id="panel-otp" data-panel="otp">
             <div class="auth-panel__header">
               <h2>Verify your identity</h2>
@@ -252,7 +291,6 @@
             </form>
           </div>
 
-          <!-- ============ RESET PASSWORD PANEL ============ -->
           <div class="auth-panel" id="panel-reset" data-panel="reset">
             <div class="auth-panel__header">
               <h2>Reset your password</h2>
@@ -291,9 +329,7 @@
     </section>
   </main>
 
-  <!-- ===================== TOAST / STATUS MESSAGE ===================== -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="Account.js"></script>
 </body>
 </html>
