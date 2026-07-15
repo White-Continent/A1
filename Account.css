@@ -298,12 +298,13 @@ input, select, button {
 
 .auth-card {
   width: 100%;
-  max-width: 480px;
+  max-width: 520px;
   background-color: var(--color-white);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   overflow: hidden;
   border: 1px solid var(--color-border);
+  transition: max-width var(--transition-base);
 }
 
 .auth-card__tabs {
@@ -351,13 +352,22 @@ input, select, button {
   padding: 2.25rem 2rem 2.5rem;
 }
 
-/* ---------- Panels ---------- */
+/* ---------- Panels & Steps ---------- */
 .auth-panel {
   display: none;
   animation: fadeSlideIn var(--transition-base);
 }
 
 .auth-panel.is-active {
+  display: block;
+}
+
+.register-step {
+  display: none;
+  animation: fadeSlideIn var(--transition-base);
+}
+
+.register-step.is-active {
   display: block;
 }
 
@@ -466,8 +476,36 @@ input, select, button {
 .form-error {
   font-size: 0.8rem;
   color: var(--color-error);
-  min-height: 1em;
+  min-height: 1.2em;
   display: block;
+  margin-top: 2px;
+}
+
+/* Verified Email State UI */
+.input-verified-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-verified {
+  background-color: #F1F5F9 !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-text-muted) !important;
+  padding-right: 6.5rem !important;
+  cursor: not-allowed;
+}
+
+.badge-verified {
+  position: absolute;
+  right: 0.75rem;
+  background-color: rgba(22, 163, 74, 0.1);
+  color: var(--color-accent);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 /* ---------- Password field with icon ---------- */
@@ -670,7 +708,7 @@ input, select, button {
   }
 
   .auth-card {
-    max-width: 460px;
+    max-width: 480px;
   }
 }
 
