@@ -36,17 +36,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const tabs = document.querySelectorAll('.auth-tab');
   const panels = document.querySelectorAll('.auth-panel');
 
-  /**
-   * Switches the visible panel and, if that panel has a
-   * matching tab, updates the active tab state too.
-   * @param {string} target - data-panel value e.g. "login"
-   */
   function showPanel(target) {
     panels.forEach((panel) => {
       panel.classList.toggle('is-active', panel.dataset.panel === target);
     });
 
-    // Only Login / Register have visible tabs
+    // Reset registration step to email whenever user switches back to register tab
+    if (target === 'register') {
+      showRegisterStep('email');
+    }
+
     const hasTab = target === 'login' || target === 'register';
     tabs.forEach((tab) => {
       const isMatch = tab.dataset.target === target;
@@ -58,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
       authTabs.style.display = hasTab ? 'flex' : 'none';
     }
 
-    // Move focus to the panel heading for accessibility
     const heading = document.querySelector(`#panel-${target} .auth-panel__header h2`);
     if (heading) {
       heading.setAttribute('tabindex', '-1');
@@ -66,14 +64,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Switch between register sub-steps (email -> otp -> details)
+  function showRegisterStep(stepName) {
+    const steps = document.querySelectorAll('.register-step');
+    steps.forEach((step) => {
+      step.classList.toggle('is-active', step.id === `register-step-${stepName}`);
+    });
+  }
+
   // Tab click handlers
   tabs.forEach((tab) => {
     tab.addEventListener('click', () => showPanel(tab.dataset.target));
   });
 
-  // Any element with [data-target] inside the auth card (links between panels)
   document.querySelectorAll('.auth-card [data-target]').forEach((el) => {
-    if (el.classList.contains('auth-tab')) return; // already handled above
+    if (el.classList.contains('auth-tab')) return;
     el.addEventListener('click', () => showPanel(el.dataset.target));
   });
 
@@ -95,34 +100,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ---------------------------------------------------------
-     4. OTP INPUT — auto-focus, backspace nav, paste support
+     4. OTP INPUTS — Auto-focus & Navigation
   --------------------------------------------------------- */
-  const otpGroup = document.getElementById('otpGroup');
+  function setupOtpNavigation(groupElement) {
+    if (!groupElement) return;
+    const inputs = Array.from(groupElement.querySelectorAll('.otp-input'));
 
-  if (otpGroup) {
-    const otpInputs = Array.from(otpGroup.querySelectorAll('.otp-input'));
-
-    otpInputs.forEach((input, index) => {
+    inputs.forEach((input, index) => {
       input.addEventListener('input', (e) => {
         const value = e.target.value.replace(/[^0-9]/g, '');
         e.target.value = value.slice(-1);
 
-        clearFieldError(otpGroup, 'otpGroup');
+        clearFieldError(groupElement, groupElement.id);
 
-        if (value && index < otpInputs.length - 1) {
-          otpInputs[index + 1].focus();
+        if (value && index < inputs.length - 1) {
+          inputs[index + 1].focus();
         }
       });
 
       input.addEventListener('keydown', (e) => {
         if (e.key === 'Backspace' && !input.value && index > 0) {
-          otpInputs[index - 1].focus();
+          inputs[index - 1].focus();
         }
         if (e.key === 'ArrowLeft' && index > 0) {
-          otpInputs[index - 1].focus();
+          inputs[index - 1].focus();
         }
-        if (e.key === 'ArrowRight' && index < otpInputs.length - 1) {
-          otpInputs[index + 1].focus();
+        if (e.key === 'ArrowRight' && index < inputs.length - 1) {
+          inputs[index + 1].focus();
         }
       });
 
@@ -131,17 +135,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const pasted = (e.clipboardData || window.clipboardData)
           .getData('text')
           .replace(/[^0-9]/g, '')
-          .slice(0, otpInputs.length);
+          .slice(0, inputs.length);
 
         pasted.split('').forEach((char, i) => {
-          if (otpInputs[i]) otpInputs[i].value = char;
+          if (inputs[i]) inputs[i].value = char;
         });
 
-        const nextIndex = Math.min(pasted.length, otpInputs.length - 1);
-        otpInputs[nextIndex].focus();
+        const nextIndex = Math.min(pasted.length, inputs.length - 1);
+        inputs[nextIndex].focus();
       });
     });
   }
+
+  // Setup both general and register OTP fields
+  setupOtpNavigation(document.getElementById('otpGroup'));
+  setupOtpNavigation(document.getElementById('regOtpGroup'));
 
 
   /* ---------------------------------------------------------
@@ -162,7 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (errorEl) errorEl.textContent = '';
   }
 
-  // Clear error state as the user types/selects
   document.querySelectorAll('.auth-form input, .auth-form select').forEach((field) => {
     const key = field.id;
     if (!key) return;
@@ -219,7 +226,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const submitBtn = loginForm.querySelector('button[type="submit"]');
       setLoading(submitBtn, true);
 
-      // Simulated authentication request
       setTimeout(() => {
         setLoading(submitBtn, false);
         showToast('Login successful! Redirecting to your dashboard…', 'success');
@@ -230,18 +236,101 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ---------------------------------------------------------
-     8. REGISTER FORM
+     8. REGISTER FLOWS (Correct Step Sequence)
   --------------------------------------------------------- */
-  const registerForm = document.getElementById('registerForm');
+  let userRegisterEmail = "";
 
-  if (registerForm) {
-    registerForm.addEventListener('submit', (e) => {
+  // -- Step 1: Email Input Form --
+  const registerEmailForm = document.getElementById('registerEmailForm');
+  if (registerEmailForm) {
+    registerEmailForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailInput = document.getElementById('registerEmail');
+
+      if (!EMAIL_REGEX.test(emailInput.value.trim())) {
+        setFieldError(emailInput, 'registerEmail', 'Please enter a valid email address.');
+        return;
+      }
+
+      userRegisterEmail = emailInput.value.trim();
+      const submitBtn = registerEmailForm.querySelector('button[type="submit"]');
+      setLoading(submitBtn, true);
+
+      // Simulate sending OTP code
+      setTimeout(() => {
+        setLoading(submitBtn, false);
+        showToast(`Verification code sent to ${userRegisterEmail}`, 'success');
+        showRegisterStep('otp'); // Go to Step 2
+      }, 1200);
+    });
+  }
+
+  // -- Step 2: Register OTP Verification --
+  const registerOtpForm = document.getElementById('registerOtpForm');
+  const regOtpGroup = document.getElementById('regOtpGroup');
+  if (registerOtpForm && regOtpGroup) {
+    registerOtpForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const otpInputs = Array.from(regOtpGroup.querySelectorAll('.otp-input'));
+      const code = otpInputs.map((input) => input.value).join('');
+
+      if (code.length < 6) {
+        otpInputs.forEach((input) => input.classList.add('is-invalid'));
+        const errorEl = document.querySelector('[data-error-for="regOtpGroup"]');
+        if (errorEl) errorEl.textContent = 'Please enter the complete 6-digit code.';
+        return;
+      }
+
+      const submitBtn = registerOtpForm.querySelector('button[type="submit"]');
+      setLoading(submitBtn, true);
+
+      // Simulate OTP Verification Success
+      setTimeout(() => {
+        setLoading(submitBtn, false);
+        showToast('Email verified successfully!', 'success');
+
+        // Autofill verified email in Step 3 display
+        const verifiedEmailDisplay = document.getElementById('verifiedEmailDisplay');
+        if (verifiedEmailDisplay) verifiedEmailDisplay.value = userRegisterEmail;
+
+        showRegisterStep('details'); // Go to Step 3
+      }, 1200);
+    });
+  }
+
+  // OTP Resend Logic
+  const regResendOtp = document.getElementById('regResendOtp');
+  if (regResendOtp) {
+    regResendOtp.addEventListener('click', () => {
+      regResendOtp.disabled = true;
+      let seconds = 30;
+      const originalText = regResendOtp.textContent;
+      regResendOtp.textContent = `Resend in ${seconds}s`;
+
+      const countdown = setInterval(() => {
+        seconds -= 1;
+        regResendOtp.textContent = `Resend in ${seconds}s`;
+
+        if (seconds <= 0) {
+          clearInterval(countdown);
+          regResendOtp.disabled = false;
+          regResendOtp.textContent = originalText;
+        }
+      }, 1000);
+
+      showToast(`A new verification code has been sent to ${userRegisterEmail}`, 'success');
+    });
+  }
+
+  // -- Step 3: Complete Personal Details --
+  const registerDetailsForm = document.getElementById('registerDetailsForm');
+  if (registerDetailsForm) {
+    registerDetailsForm.addEventListener('submit', (e) => {
       e.preventDefault();
       let isValid = true;
 
       const firstName = document.getElementById('firstName');
       const lastName = document.getElementById('lastName');
-      const email = document.getElementById('registerEmail');
       const phone = document.getElementById('phone');
       const province = document.getElementById('province');
       const password = document.getElementById('registerPassword');
@@ -255,11 +344,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!lastName.value.trim()) {
         setFieldError(lastName, 'lastName', 'Last name is required.');
-        isValid = false;
-      }
-
-      if (!EMAIL_REGEX.test(email.value.trim())) {
-        setFieldError(email, 'registerEmail', 'Please enter a valid email address.');
         isValid = false;
       }
 
@@ -294,13 +378,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!isValid) return;
 
-      const submitBtn = registerForm.querySelector('button[type="submit"]');
+      const submitBtn = registerDetailsForm.querySelector('button[type="submit"]');
       setLoading(submitBtn, true);
 
+      // Simulate profile creation complete and redirecting to login page
       setTimeout(() => {
         setLoading(submitBtn, false);
-        showToast('Account created successfully! Please log in.', 'success');
-        registerForm.reset();
+        showToast('Registration complete! Please login with your new credentials.', 'success');
+        
+        // Reset forms
+        registerEmailForm.reset();
+        registerOtpForm.reset();
+        registerDetailsForm.reset();
+
         showPanel('login');
       }, 1200);
     });
@@ -336,7 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ---------------------------------------------------------
-     10. OTP VERIFICATION FORM
+     10. OTP VERIFICATION FORM (General Forgot Password Panel)
   --------------------------------------------------------- */
   const otpForm = document.getElementById('otpForm');
   const resendOtpBtn = document.getElementById('resendOtp');
@@ -344,7 +434,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (otpForm) {
     otpForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const otpInputs = Array.from(otpGroup.querySelectorAll('.otp-input'));
+      const otpInputs = Array.from(document.getElementById('otpGroup').querySelectorAll('.otp-input'));
       const code = otpInputs.map((input) => input.value).join('');
 
       if (code.length < 6) {
