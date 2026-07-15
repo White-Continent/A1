@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Northgate Licensing | Become a Licensed Security Guard in Canada</title>
+<meta name="description" content="Provincial security guard licensing, training, exam booking and application tracking — everything you need to get licensed, in one place.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: { 950:'#071a35',900:'#0b2a52',800:'#0f3a72',700:'#164a8f',600:'#1e5cad' },
+          emerald: { 700:'#0b7a52',600:'#0f9d6d',500:'#1cb87f',100:'#e3f6ee' },
+          sky: { 500:'#4a90d9',100:'#eaf3fc' },
+          ink: { 900:'#10192b',600:'#4b5670',400:'#8a93a8' },
+          offwhite: '#f8f8f5', line:'#e3e6ee'
+        },
+        fontFamily: {
+          display: ['Space Grotesk','system-ui','sans-serif'],
+          body: ['Inter','system-ui','sans-serif'],
+          mono: ['IBM Plex Mono','ui-monospace','monospace']
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="font-body">
+
+<!-- ============ NAV ============ -->
+<header class="site-nav">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
+    <a class="flex items-center gap-2.5">
+      <span class="w-9 h-9 rounded-lg bg-navy-900 flex items-center justify-center">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3.5v6c0 5-3.4 8.9-8 10.5-4.6-1.6-8-5.5-8-10.5v-6L12 2z" stroke="white" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.5 12.2l2.4 2.4 4.6-4.9" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="font-display font-semibold text-lg text-navy-900 tracking-tight">Northgate</span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-8">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="license-application.html" class="nav-link">Security Guard License</a>
+      <a href="#" class="nav-link">Exam Help</a>
+      <a href="#pricing" class="nav-link">Courses</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      <a href="services.html" class="nav-link">Services</a>
+    </nav>
+
+    <div class="hidden lg:flex items-center gap-3">
+      <a href="#" class="nav-link">Log in</a>
+      <a href="license-application.html" class="btn btn-primary btn-sm">Start application</a>
+    </div>
+
+    <button id="menuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center" aria-label="Open menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="#0b2a52" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-line bg-white px-6 py-4 space-y-1">
+     <a href="index.html" class="block py-2.5 nav-link">Home</a>
+    <a href="license-application.html" class="block py-2.5 nav-link">Security Guard License</a>
+    <a href="#" class="nav-link">Exam Help</a>
+    <a href="#pricing" class="block py-2.5 nav-link">Courses</a>
+    <a href="#faq" class="block py-2.5 nav-link">FAQ</a>
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="license-application.html" class="btn btn-primary btn-sm w-full mt-2">Start application</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-20 lg:pt-24 lg:pb-28 grid lg:grid-cols-2 gap-16 items-center">
+    <div>
+      <span class="eyebrow">Licensed in every province we serve</span>
+      <h1 class="font-display text-[2.6rem] leading-[1.05] sm:text-6xl font-semibold text-navy-900 mt-6">
+        Your security guard license, <span class="text-emerald-600">handled end to end.</span>
+      </h1>
+      <p class="text-ink-600 text-lg leading-relaxed mt-6 max-w-lg">
+        Training, CPR certification, exam booking and your license application — in one account, tracked from the first module to the day your card arrives.
+      </p>
+
+      <form class="mt-9 bg-white border border-line rounded-2xl p-2 flex flex-col sm:flex-row gap-2 shadow-soft max-w-xl" onsubmit="return false;">
+        <label for="provinceSelect" class="sr-only">Choose your province</label>
+        <select id="provinceSelect" class="flex-1 bg-transparent px-4 py-3 text-sm font-medium text-ink-900 rounded-xl focus:outline-none">
+          <option value="">Choose your province</option>
+          <option>Ontario</option>
+          <option>Alberta</option>
+          <option>British Columbia</option>
+          <option>Manitoba</option>
+        </select>
+        <button class="btn btn-emerald sm:w-auto w-full">
+          See requirements
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+
+      <div class="flex items-center gap-8 mt-10">
+        <div>
+          <div class="font-display text-2xl font-semibold text-navy-900">18,400+</div>
+          <div class="text-sm text-ink-400">Guards licensed</div>
+        </div>
+        <div class="w-px h-9 bg-line"></div>
+        <div>
+          <div class="font-display text-2xl font-semibold text-navy-900">4</div>
+          <div class="text-sm text-ink-400">Provinces covered</div>
+        </div>
+        <div class="w-px h-9 bg-line"></div>
+        <div>
+          <div class="font-display text-2xl font-semibold text-navy-900">96%</div>
+          <div class="text-sm text-ink-400">Exam pass rate</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-center lg:justify-end">
+      <div class="license-card" id="licenseCard">
+        <div class="lc-row">
+          <div>
+            <div class="lc-label">Province</div>
+            <div class="lc-value" id="lcProvince"></div>
+          </div>
+          <div class="lc-chip"></div>
+        </div>
+        <div>
+          <div class="lc-row items-end">
+            <div>
+              <div class="lc-label">Licensed Guard</div>
+              <div class="lc-value" id="lcName"></div>
+            </div>
+          </div>
+          <div class="lc-row mt-4">
+            <div>
+              <div class="lc-label">License No.</div>
+              <div class="lc-value font-mono text-base" id="lcNumber"></div>
+            </div>
+            <span class="lc-status" id="lcStatus">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Verified
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOGO / TRUST STRIP ============ -->
+<section class="border-y border-line bg-white py-6 overflow-hidden">
+
+    <p class="text-center text-xs font-mono uppercase tracking-widest text-ink-400 mb-4">
+        Aligned with provincial regulators
+    </p>
+
+    <div class="marquee">
+        <div class="marquee-track" id="marqueeTrack">
+
+            <span>Ontario · MCSCS</span>
+            <span>Alberta · Solicitor General</span>
+            <span>BC · Security Programs Div.</span>
+            <span>Manitoba · Justice</span>
+
+        </div>
+    </div>
+
+</section>
+
+<!-- ============ SERVICES GRID ============ -->
+<section class="max-w-7xl mx-auto px-6 lg:px-8 py-24">
+  <div class="max-w-xl">
+    <span class="eyebrow-navy eyebrow">What we handle</span>
+    <h2 class="font-display text-4xl font-semibold text-navy-900 mt-5">Everything between "I want to work in security" and a license in hand.</h2>
+  </div>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
+    <div class="card card-hover p-7">
+      <div class="w-11 h-11 rounded-xl bg-emerald-100 flex items-center justify-center mb-5">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 19.5V6a2 2 0 012-2h8.5L20 8.5V19.5a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 014 19.5z" stroke="#0b7a52" stroke-width="1.7"/><path d="M8 12h8M8 16h5" stroke="#0b7a52" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </div>
+      <h3 class="font-display text-lg font-semibold text-navy-900">Security guard training</h3>
+      <p class="text-ink-600 text-sm mt-2 leading-relaxed">Province-mandated basic training, delivered on your schedule, with a completion record sent straight to your file.</p>
+      <a href="services.html" class="text-sm font-semibold text-emerald-700 mt-4 inline-flex items-center gap-1">Learn more →</a>
+    </div>
+
+    <div class="card card-hover p-7">
+      <div class="w-11 h-11 rounded-xl bg-sky-100 flex items-center justify-center mb-5">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-9.3-9C1 8.5 3 5 6.5 5 8.6 5 10.7 6.2 12 8c1.3-1.8 3.4-3 5.5-3C21 5 23 8.5 21.3 12 19 16.5 12 21 12 21z" stroke="#164a8f" stroke-width="1.7"/></svg>
+      </div>
+      <h3 class="font-display text-lg font-semibold text-navy-900">CPR &amp; First Aid</h3>
+      <p class="text-ink-600 text-sm mt-2 leading-relaxed">A required certification, bundled or standalone, with in-person session slots across your province.</p>
+      <a href="services.html" class="text-sm font-semibold text-emerald-700 mt-4 inline-flex items-center gap-1">Learn more →</a>
+    </div>
+
+    <div class="card card-hover p-7">
+      <div class="w-11 h-11 rounded-xl bg-emerald-100 flex items-center justify-center mb-5">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="17" rx="2" stroke="#0b7a52" stroke-width="1.7"/><path d="M3 9h18M8 2v4M16 2v4" stroke="#0b7a52" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </div>
+      <h3 class="font-display text-lg font-semibold text-navy-900">Exam booking</h3>
+      <p class="text-ink-600 text-sm mt-2 leading-relaxed">Pick a real seat at a real test centre. See open dates for your province and reschedule in a click.</p>
+      <a href="services.html" class="text-sm font-semibold text-emerald-700 mt-4 inline-flex items-center gap-1">Learn more →</a>
+    </div>
+
+    <div class="card card-hover p-7">
+      <div class="w-11 h-11 rounded-xl bg-sky-100 flex items-center justify-center mb-5">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 4l1.5 3.2L17 8l-2.5 2.5.6 3.5L12 12.5 8.9 14l.6-3.5L7 8l3.5-.8L12 4z" stroke="#164a8f" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 class="font-display text-lg font-semibold text-navy-900">Exam preparation</h3>
+      <p class="text-ink-600 text-sm mt-2 leading-relaxed">Practice questions modeled on your province's actual exam structure, with a readiness score before you book.</p>
+      <a href="services.html" class="text-sm font-semibold text-emerald-700 mt-4 inline-flex items-center gap-1">Learn more →</a>
+    </div>
+
+    <div class="card card-hover p-7">
+      <div class="w-11 h-11 rounded-xl bg-emerald-100 flex items-center justify-center mb-5">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3.5v6c0 5-3.4 8.9-8 10.5-4.6-1.6-8-5.5-8-10.5v-6L12 2z" stroke="#0b7a52" stroke-width="1.7"/></svg>
+      </div>
+      <h3 class="font-display text-lg font-semibold text-navy-900">License application</h3>
+      <p class="text-ink-600 text-sm mt-2 leading-relaxed">We assemble and submit your provincial application, and flag anything missing before it can cause a delay.</p>
+      <a href="license-application.html" class="text-sm font-semibold text-emerald-700 mt-4 inline-flex items-center gap-1">Learn more →</a>
+    </div>
+
+    <div class="card card-hover p-7">
+      <div class="w-11 h-11 rounded-xl bg-sky-100 flex items-center justify-center mb-5">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v4H4zM4 10h16M4 14h10M4 18h7" stroke="#164a8f" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </div>
+      <h3 class="font-display text-lg font-semibold text-navy-900">Status tracking</h3>
+      <p class="text-ink-600 text-sm mt-2 leading-relaxed">One dashboard for every step — training, exam, application, license — updated the moment something changes.</p>
+      <a href="license-application.html" class="text-sm font-semibold text-emerald-700 mt-4 inline-flex items-center gap-1">Learn more →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS (real sequence) ============ -->
+<section class="bg-white border-y border-line py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-xl">
+      <span class="eyebrow">The path to your license</span>
+      <h2 class="font-display text-4xl font-semibold text-navy-900 mt-5">Four steps. One provincial license.</h2>
+    </div>
+
+    <div class="relative mt-16 grid grid-cols-1 sm:grid-cols-4 gap-10 sm:gap-6">
+      <div class="hidden sm:block step-line"></div>
+      <div class="relative">
+        <div class="step-dot active">1</div>
+        <h3 class="font-display font-semibold text-navy-900 mt-5">Choose your province</h3>
+        <p class="text-sm text-ink-600 mt-2 leading-relaxed">Requirements, fees and timelines are set provincially — we tailor your checklist to yours.</p>
+      </div>
+      <div class="relative">
+        <div class="step-dot active">2</div>
+        <h3 class="font-display font-semibold text-navy-900 mt-5">Complete training</h3>
+        <p class="text-sm text-ink-600 mt-2 leading-relaxed">Finish the mandated basic course and CPR/First Aid at your own pace.</p>
+      </div>
+      <div class="relative">
+        <div class="step-dot">3</div>
+        <h3 class="font-display font-semibold text-navy-900 mt-5">Sit your exam</h3>
+        <p class="text-sm text-ink-600 mt-2 leading-relaxed">Book a seat, prep with practice questions, and get your result on file automatically.</p>
+      </div>
+      <div class="relative">
+        <div class="step-dot">4</div>
+        <h3 class="font-display font-semibold text-navy-900 mt-5">Apply &amp; get licensed</h3>
+        <p class="text-sm text-ink-600 mt-2 leading-relaxed">We submit your application and track it until your license is issued.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES / BENEFITS ============ -->
+<section class="max-w-7xl mx-auto px-6 lg:px-8 py-24 grid lg:grid-cols-2 gap-16 items-center">
+  <div>
+    <span class="eyebrow-navy eyebrow">Why Northgate</span>
+    <h2 class="font-display text-4xl font-semibold text-navy-900 mt-5">Built for people who need this done right the first time.</h2>
+    <div class="mt-10 space-y-7">
+      <div class="flex gap-4">
+        <div class="w-9 h-9 rounded-lg bg-emerald-100 flex items-center justify-center shrink-0 mt-0.5">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0b7a52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <h3 class="font-semibold text-navy-900">One account, every step</h3>
+          <p class="text-sm text-ink-600 mt-1 leading-relaxed">Training, exam and application status live in a single dashboard instead of three separate portals.</p>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <div class="w-9 h-9 rounded-lg bg-emerald-100 flex items-center justify-center shrink-0 mt-0.5">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0b7a52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <h3 class="font-semibold text-navy-900">Province-accurate, always</h3>
+          <p class="text-sm text-ink-600 mt-1 leading-relaxed">Requirements are reviewed against current provincial regulation, not a static checklist from years ago.</p>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <div class="w-9 h-9 rounded-lg bg-emerald-100 flex items-center justify-center shrink-0 mt-0.5">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0b7a52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <h3 class="font-semibold text-navy-900">Real people if you get stuck</h3>
+          <p class="text-sm text-ink-600 mt-1 leading-relaxed">A support team you can actually reach — by chat, email or phone — if a document gets rejected.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-8">
+    <div class="flex items-center justify-between mb-6">
+      <span class="text-sm font-semibold text-navy-900">Application progress</span>
+      <span class="text-xs font-mono text-emerald-700">75%</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" style="width:75%"></div></div>
+    <div class="mt-7 space-y-4">
+      <div class="flex items-center justify-between text-sm">
+        <span class="text-ink-900 font-medium">Basic security training</span>
+        <span class="text-emerald-700 font-mono text-xs">Complete</span>
+      </div>
+      <div class="flex items-center justify-between text-sm">
+        <span class="text-ink-900 font-medium">CPR / First Aid</span>
+        <span class="text-emerald-700 font-mono text-xs">Complete</span>
+      </div>
+      <div class="flex items-center justify-between text-sm">
+        <span class="text-ink-900 font-medium">Provincial exam</span>
+        <span class="text-navy-700 font-mono text-xs">Booked — Aug 4</span>
+      </div>
+      <div class="flex items-center justify-between text-sm">
+        <span class="text-ink-400 font-medium">License application</span>
+        <span class="text-ink-400 font-mono text-xs">Not started</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section id="pricing" class="bg-white border-y border-line py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-xl mx-auto">
+      <span class="eyebrow">Simple, published pricing</span>
+      <h2 class="font-display text-4xl font-semibold text-navy-900 mt-5">No hidden fees. No surprise upsells.</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mt-14">
+      <div class="card p-8">
+        <h3 class="font-display font-semibold text-lg text-navy-900">Training only</h3>
+        <p class="text-sm text-ink-600 mt-1">For guards who'll book their own exam.</p>
+        <div class="font-display text-4xl font-semibold text-navy-900 mt-6">$189</div>
+        <p class="text-xs text-ink-400 mt-1">one-time</p>
+        <ul class="mt-6 space-y-3 text-sm text-ink-600">
+          <li class="flex gap-2"><span class="text-emerald-600">✓</span>Basic security training</li>
+          <li class="flex gap-2"><span class="text-emerald-600">✓</span>Completion certificate</li>
+          <li class="flex gap-2"><span class="text-emerald-600">✓</span>Dashboard access</li>
+        </ul>
+        <a href="license-application.html" class="btn btn-ghost w-full mt-8">Get started</a>
+      </div>
+
+      <div class="card p-8 relative border-2 border-emerald-600">
+        <span class="absolute -top-3 left-8 eyebrow">Most chosen</span>
+        <h3 class="font-display font-semibold text-lg text-navy-900">Full licensing path</h3>
+        <p class="text-sm text-ink-600 mt-1">Training, CPR, exam and application.</p>
+        <div class="font-display text-4xl font-semibold text-navy-900 mt-6">$449</div>
+        <p class="text-xs text-ink-400 mt-1">one-time</p>
+        <ul class="mt-6 space-y-3 text-sm text-ink-600">
+          <li class="flex gap-2"><span class="text-emerald-600">✓</span>Everything in Training only</li>
+          <li class="flex gap-2"><span class="text-emerald-600">✓</span>CPR / First Aid certification</li>
+          <li class="flex gap-2"><span class="text-emerald-600">✓</span>Exam booking &amp; prep</li>
+          <li class="flex gap-2"><span class="text-emerald-600">✓</span>License application filed for you</li>
+        </ul>
+        <a href="license-application.html" class="btn btn-emerald w-full mt-8">Get started</a>
+      </div>
+
+      <div class="card p-8">
+        <h3 class="font-display font-semibold text-lg text-navy-900">Application only</h3>
+        <p class="text-sm text-ink-600 mt-1">Already trained and passed your exam?</p>
+        <div class="font-display text-4xl font-semibold text-navy-900 mt-6">$79</div>
+        <p class="text-xs text-ink-400 mt-1">one-time</p>
+        <ul class="mt-6 space-y-3 text-sm text-ink-600">
+          <li class="flex gap-2"><span class="text-emerald-600">✓</span>Document review</li>
+          <li class="flex gap-2"><span class="text-emerald-600">✓</span>Application filed &amp; tracked</li>
+          <li class="flex gap-2"><span class="text-emerald-600">✓</span>Support until issued</li>
+        </ul>
+        <a href="license-application.html" class="btn btn-ghost w-full mt-8">Get started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="max-w-7xl mx-auto px-6 lg:px-8 py-24">
+  <span class="eyebrow-navy eyebrow">From people we've licensed</span>
+  <h2 class="font-display text-4xl font-semibold text-navy-900 mt-5 max-w-lg">Real applicants, real timelines.</h2>
+
+  <div class="grid md:grid-cols-3 gap-6 mt-12">
+    <div class="card p-7">
+      <p class="text-ink-900 leading-relaxed">"I moved to Alberta three months ago and had no idea where to start. The dashboard told me exactly what was next, every time."</p>
+      <div class="flex items-center gap-3 mt-6">
+        <div class="w-9 h-9 rounded-full bg-navy-900 text-white flex items-center justify-center font-display text-sm">RS</div>
+        <div>
+          <div class="text-sm font-semibold text-navy-900">Ravi S.</div>
+          <div class="text-xs text-ink-400">Licensed, Alberta</div>
+        </div>
+      </div>
+    </div>
+    <div class="card p-7">
+      <p class="text-ink-900 leading-relaxed">"Booked my exam in under two minutes and passed on the first try after the practice questions. Straightforward, no fluff."</p>
+      <div class="flex items-center gap-3 mt-6">
+        <div class="w-9 h-9 rounded-full bg-navy-900 text-white flex items-center justify-center font-display text-sm">MK</div>
+        <div>
+          <div class="text-sm font-semibold text-navy-900">Maya K.</div>
+          <div class="text-xs text-ink-400">Licensed, Ontario</div>
+        </div>
+      </div>
+    </div>
+    <div class="card p-7">
+      <p class="text-ink-900 leading-relaxed">"My application was missing a document and support caught it before it got rejected. Saved me weeks."</p>
+      <div class="flex items-center gap-3 mt-6">
+        <div class="w-9 h-9 rounded-full bg-navy-900 text-white flex items-center justify-center font-display text-sm">DT</div>
+        <div>
+          <div class="text-sm font-semibold text-navy-900">Daniyar T.</div>
+          <div class="text-xs text-ink-400">Licensed, British Columbia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="bg-white border-y border-line py-24">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8">
+    <span class="eyebrow">Questions</span>
+    <h2 class="font-display text-4xl font-semibold text-navy-900 mt-5">Frequently asked</h2>
+
+    <div class="mt-10 divide-y divide-line border-t border-b border-line">
+      <details class="group py-5">
+        <summary class="flex items-center justify-between cursor-pointer list-none">
+          <span class="font-medium text-navy-900">How long does licensing take?</span>
+          <svg class="transition-transform group-open:rotate-45 shrink-0 ml-4" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#0b2a52" stroke-width="2" stroke-linecap="round"/></svg>
+        </summary>
+        <p class="text-sm text-ink-600 mt-3 leading-relaxed">Most applicants finish training, exam and application within 3–6 weeks, depending on provincial exam availability.</p>
+      </details>
+      <details class="group py-5">
+        <summary class="flex items-center justify-between cursor-pointer list-none">
+          <span class="font-medium text-navy-900">Do requirements differ by province?</span>
+          <svg class="transition-transform group-open:rotate-45 shrink-0 ml-4" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#0b2a52" stroke-width="2" stroke-linecap="round"/></svg>
+        </summary>
+        <p class="text-sm text-ink-600 mt-3 leading-relaxed">Yes. Training hours, fees and exam formats are set by each province. Your checklist adjusts automatically once you select yours.</p>
+      </details>
+      <details class="group py-5">
+        <summary class="flex items-center justify-between cursor-pointer list-none">
+          <span class="font-medium text-navy-900">I already completed training elsewhere — can I skip that step?</span>
+          <svg class="transition-transform group-open:rotate-45 shrink-0 ml-4" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#0b2a52" stroke-width="2" stroke-linecap="round"/></svg>
+        </summary>
+        <p class="text-sm text-ink-600 mt-3 leading-relaxed">Yes — choose the Application only plan and upload your existing completion certificate for review.</p>
+      </details>
+      <details class="group py-5">
+        <summary class="flex items-center justify-between cursor-pointer list-none">
+          <span class="font-medium text-navy-900">What if my application gets rejected?</span>
+          <svg class="transition-transform group-open:rotate-45 shrink-0 ml-4" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#0b2a52" stroke-width="2" stroke-linecap="round"/></svg>
+        </summary>
+        <p class="text-sm text-ink-600 mt-3 leading-relaxed">Support reviews rejection notices with you and helps refile at no extra cost for document-related issues.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="max-w-7xl mx-auto px-6 lg:px-8 py-24">
+  <div class="rounded-3xl bg-navy-950 px-10 py-16 sm:px-16 text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-40" style="background-image:radial-gradient(circle at 20% 20%, rgba(28,184,127,0.25), transparent 40%);"></div>
+    <h2 class="font-display text-4xl sm:text-5xl font-semibold text-white relative">Ready to start your license?</h2>
+    <p class="text-white/70 mt-4 max-w-lg mx-auto relative">Choose your province and see exactly what's required — no account needed to look.</p>
+    <a href="license-application.html" class="btn btn-emerald mt-8 relative">Choose your province</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="border-t border-line bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid sm:grid-cols-2 lg:grid-cols-5 gap-10">
+    <div class="lg:col-span-1">
+      <div class="flex items-center gap-2.5">
+        <span class="w-8 h-8 rounded-lg bg-navy-900 flex items-center justify-center">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3.5v6c0 5-3.4 8.9-8 10.5-4.6-1.6-8-5.5-8-10.5v-6L12 2z" stroke="white" stroke-width="1.8"/></svg>
+        </span>
+        <span class="font-display font-semibold text-navy-900">Northgate</span>
+      </div>
+      <p class="text-sm text-ink-400 mt-4 leading-relaxed">Provincial security guard licensing, training and application tracking.</p>
+    </div>
+    <div>
+      <h4 class="text-sm font-semibold text-navy-900 mb-4">Services</h4>
+      <ul class="space-y-2.5 text-sm text-ink-600">
+        <li><a href="services.html" class="hover:text-navy-900">Training</a></li>
+        <li><a href="services.html" class="hover:text-navy-900">CPR / First Aid</a></li>
+        <li><a href="services.html" class="hover:text-navy-900">Exam booking</a></li>
+        <li><a href="license-application.html" class="hover:text-navy-900">License application</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-sm font-semibold text-navy-900 mb-4">Provinces</h4>
+      <ul class="space-y-2.5 text-sm text-ink-600">
+        <li><a href="#" class="hover:text-navy-900">Ontario</a></li>
+        <li><a href="#" class="hover:text-navy-900">Alberta</a></li>
+        <li><a href="#" class="hover:text-navy-900">British Columbia</a></li>
+        <li><a href="#" class="hover:text-navy-900">Manitoba</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-sm font-semibold text-navy-900 mb-4">Company</h4>
+      <ul class="space-y-2.5 text-sm text-ink-600">
+        <li><a href="#" class="hover:text-navy-900">About</a></li>
+        <li><a href="#" class="hover:text-navy-900">Careers</a></li>
+        <li><a href="#" class="hover:text-navy-900">Blog</a></li>
+        <li><a href="#" class="hover:text-navy-900">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-sm font-semibold text-navy-900 mb-4">Legal</h4>
+      <ul class="space-y-2.5 text-sm text-ink-600">
+        <li><a href="#" class="hover:text-navy-900">Privacy policy</a></li>
+        <li><a href="#" class="hover:text-navy-900">Terms &amp; conditions</a></li>
+        <li><a href="#" class="hover:text-navy-900">Refund policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-line py-6">
+    <p class="text-center text-xs text-ink-400">© 2026 Northgate Licensing. Independent licensing service — not a government agency.</p>
+  </div>
+</footer>
+
+<script>
+const track = document.getElementById("marqueeTrack");
+
+// Duplicate once
+track.innerHTML += track.innerHTML;
+
+let x = 0;
+const speed = 0.9; // Speed
+
+function animate(){
+
+    x -= speed;
+
+    if(Math.abs(x) >= track.scrollWidth / 2){
+
+        x = 0;
+
+    }
+
+    track.style.transform = `translateX(${x}px)`;
+
+    requestAnimationFrame(animate);
+
+}
+
+animate();
+
+
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+  });
+
+  // Signature license card — typewriter build sequence
+  (function(){
+    const fields = [
+      { el: document.getElementById('lcProvince'), text: 'Ontario', delay: 300 },
+      { el: document.getElementById('lcName'), text: 'A. Whitfield', delay: 900 },
+      { el: document.getElementById('lcNumber'), text: 'ON-SG-208441', delay: 1600 },
+    ];
+    function typeInto(el, text, cb){
+      el.classList.add('typing');
+      let i = 0;
+      const iv = setInterval(() => {
+        el.textContent = text.slice(0, ++i);
+        if (i >= text.length) { clearInterval(iv); el.classList.remove('typing'); cb && cb(); }
+      }, 45);
+    }
+    fields.forEach(f => setTimeout(() => typeInto(f.el, f.text), f.delay));
+    setTimeout(() => document.getElementById('lcStatus').classList.add('show'), 2600);
+  })();
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.card, section h2').forEach(el => { el.classList.add('reveal'); io.observe(el); });
+</script>
+
+</body>
+</html>
