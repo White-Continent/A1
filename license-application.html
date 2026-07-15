@@ -1,377 +1,1665 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Security Guard License Application | Northgate Licensing</title>
-<meta name="description" content="Apply for your provincial security guard license. Choose your province, complete your checklist, and track your application to approval.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = { theme: { extend: {
-    colors: { navy:{950:'#071a35',900:'#0b2a52',800:'#0f3a72',700:'#164a8f',600:'#1e5cad'}, emerald:{700:'#0b7a52',600:'#0f9d6d',500:'#1cb87f',100:'#e3f6ee'}, sky:{500:'#4a90d9',100:'#eaf3fc'}, ink:{900:'#10192b',600:'#4b5670',400:'#8a93a8'}, offwhite:'#f8f8f5', line:'#e3e6ee' },
-    fontFamily: { display:['Space Grotesk','system-ui','sans-serif'], body:['Inter','system-ui','sans-serif'], mono:['IBM Plex Mono','ui-monospace','monospace'] }
-  }}}
-</script>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Guard License Application | Northgate Licensing</title>
+  <meta name="description"
+    content="Apply for your provincial security guard license. Choose your province, complete your checklist, and track your application to approval.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { navy: { 950: '#071a35', 900: '#0b2a52', 800: '#0f3a72', 700: '#164a8f', 600: '#1e5cad' }, emerald: { 700: '#0b7a52', 600: '#0f9d6d', 500: '#1cb87f', 100: '#e3f6ee' }, sky: { 500: '#4a90d9', 100: '#eaf3fc' }, ink: { 900: '#10192b', 600: '#4b5670', 400: '#8a93a8' }, offwhite: '#f8f8f5', line: '#e3e6ee' },
+          fontFamily: { display: ['Space Grotesk', 'system-ui', 'sans-serif'], body: ['Inter', 'system-ui', 'sans-serif'], mono: ['IBM Plex Mono', 'ui-monospace', 'monospace'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="font-body">
 
-<!-- ============ NAV ============ -->
-<header class="site-nav">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
-    <a class="flex items-center gap-2.5">
-      <span class="w-9 h-9 rounded-lg bg-navy-900 flex items-center justify-center">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3.5v6c0 5-3.4 8.9-8 10.5-4.6-1.6-8-5.5-8-10.5v-6L12 2z" stroke="white" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.5 12.2l2.4 2.4 4.6-4.9" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
-      <span class="font-display font-semibold text-lg text-navy-900 tracking-tight">Northgate</span>
-    </a>
-    <nav class="hidden lg:flex items-center gap-8">
-      <a href="index.html" class="nav-link">Home</a>
+  <!-- ============ NAV ============ -->
+  <header class="site-nav">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a class="flex items-center gap-2.5">
+        <span class="w-9 h-9 rounded-lg bg-navy-900 flex items-center justify-center">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2l8 3.5v6c0 5-3.4 8.9-8 10.5-4.6-1.6-8-5.5-8-10.5v-6L12 2z" stroke="white" stroke-width="1.8"
+              stroke-linejoin="round" />
+            <path d="M8.5 12.2l2.4 2.4 4.6-4.9" stroke="white" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </span>
+        <span class="font-display font-semibold text-lg text-navy-900 tracking-tight">Northgate</span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="license-application.html" class="nav-link text-navy-900 font-semibold">Security Guard License</a>
+        <a href="#" class="nav-link">Exam Help</a>
+        <a href="index.html#pricing" class="nav-link">Courses</a>
+        <a href="index.html#faq" class="nav-link">FAQ</a>
+        <a href="services.html" class="nav-link">Services</a>
+      </nav>
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="#" class="nav-link">Log in</a>
+        <a href="#apply" class="btn btn-primary btn-sm">Start application</a>
+      </div>
+      <button id="menuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="#0b2a52" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-line bg-white px-6 py-4 space-y-1">
+      <a href="index.html" class="block py-2.5 nav-link">Home</a>
       <a href="license-application.html" class="nav-link text-navy-900 font-semibold">Security Guard License</a>
-      <a href="#" class="nav-link">Exam Help</a>
-      <a href="index.html#pricing" class="nav-link">Courses</a>
-      <a href="index.html#faq" class="nav-link">FAQ</a>
-      <a href="services.html" class="nav-link">Services</a>
-    </nav>
-    <div class="hidden lg:flex items-center gap-3">
-      <a href="#" class="nav-link">Log in</a>
-      <a href="#apply" class="btn btn-primary btn-sm">Start application</a>
+      <a href="#" class="block py-2.5 nav-link">Exam Help</a>
+      <a href="index.html#pricing" class="block py-2.5 nav-link">Courses</a>
+      <a href="index.html#faq" class="block py-2.5 nav-link">FAQ</a>
+      <a href="services.html" class="block py-2.5 nav-link">Services</a>
+      <a href="#apply" class="btn btn-primary btn-sm w-full mt-2">Start application</a>
     </div>
-    <button id="menuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center" aria-label="Open menu">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="#0b2a52" stroke-width="2" stroke-linecap="round"/></svg>
-    </button>
-  </div>
-  <div id="mobileMenu" class="hidden lg:hidden border-t border-line bg-white px-6 py-4 space-y-1">
-    <a href="index.html" class="block py-2.5 nav-link">Home</a>
-    <a href="license-application.html" class="nav-link text-navy-900 font-semibold">Security Guard License</a>
-    <a href="#" class="block py-2.5 nav-link">Exam Help</a>
-    <a href="index.html#pricing" class="block py-2.5 nav-link">Courses</a>
-    <a href="index.html#faq" class="block py-2.5 nav-link">FAQ</a>
-    <a href="services.html" class="block py-2.5 nav-link">Services</a>
-    <a href="#apply" class="btn btn-primary btn-sm w-full mt-2">Start application</a>
-  </div>
-</header>
+  </header>
 
-<!-- ============ HERO ============ -->
-<section class="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-10 grid lg:grid-cols-2 gap-14 items-center">
-  <div>
-    <span class="eyebrow">Security guard license</span>
-    <h1 class="font-display text-5xl font-semibold text-navy-900 mt-6 leading-[1.08]">Apply for your provincial license.</h1>
-    <p class="text-ink-600 text-lg mt-5 leading-relaxed max-w-lg">We check your documents before submission, file with your province, and track it until your license is issued.</p>
-    <div class="flex items-center gap-4 mt-8">
-      <a href="#apply" class="btn btn-emerald">Begin my application</a>
-      <span class="text-sm text-ink-400 font-mono">$79 · filed within 2 business days</span>
+  <!-- ============ HERO ============ -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-10 grid lg:grid-cols-2 gap-14 items-center">
+    <div>
+      <span class="eyebrow">Security guard license</span>
+      <h1 class="font-display text-5xl font-semibold text-navy-900 mt-6 leading-[1.08]">Apply for your provincial
+        license.</h1>
+      <p class="text-ink-600 text-lg mt-5 leading-relaxed max-w-lg">We check your documents before submission, file with
+        your province, and track it until your license is issued.</p>
+      <div class="flex items-center gap-4 mt-8">
+        <a href="#apply" class="btn btn-emerald">Begin my application</a>
+        <span class="text-sm text-ink-400 font-mono">$79 · filed within 2 business days</span>
+      </div>
     </div>
-  </div>
-  <div class="card p-7">
-    <h3 class="text-sm font-semibold text-navy-900 mb-4">Before you apply, you'll need</h3>
-    <ul class="space-y-3 text-sm text-ink-600">
-      <li class="flex gap-2.5"><span class="text-emerald-600 mt-0.5">✓</span>Completed basic security training certificate</li>
-      <li class="flex gap-2.5"><span class="text-emerald-600 mt-0.5">✓</span>Passing result on your provincial exam</li>
-      <li class="flex gap-2.5"><span class="text-emerald-600 mt-0.5">✓</span>Valid government-issued photo ID</li>
-      <li class="flex gap-2.5"><span class="text-emerald-600 mt-0.5">✓</span>Criminal record check (we tell you where to get one)</li>
-    </ul>
-    <p class="text-xs text-ink-400 mt-5">Missing something? Choose the Full licensing path instead — it includes training and your exam.</p>
-  </div>
-</section>
+    <div class="card p-7">
+      <h3 class="text-sm font-semibold text-navy-900 mb-4">Before you apply, you'll need</h3>
+      <ul class="space-y-3 text-sm text-ink-600">
+        <li class="flex gap-2.5"><span class="text-emerald-600 mt-0.5">✓</span>Completed basic security training
+          certificate</li>
+        <li class="flex gap-2.5"><span class="text-emerald-600 mt-0.5">✓</span>Passing result on your provincial exam
+        </li>
+        <li class="flex gap-2.5"><span class="text-emerald-600 mt-0.5">✓</span>Valid government-issued photo ID</li>
+        <li class="flex gap-2.5"><span class="text-emerald-600 mt-0.5">✓</span>Criminal record check (we tell you where
+          to get one)</li>
+      </ul>
+      <p class="text-xs text-ink-400 mt-5">Missing something? Choose the Full licensing path instead — it includes
+        training and your exam.</p>
+    </div>
+  </section>
 
-<!-- ============ APPLICATION WIZARD ============ -->
-<section id="apply" class="bg-white border-y border-line py-20">
- <div class="province-card active">
+  <!-- ============ APPLICATION WIZARD ============ -->
+  <section class="province-section">
 
-    <div class="province-header">
+    <div class="section-title">
 
-        <div class="province-left">
+      <h2>Security Guard Licence</h2>
 
-            <img src="images/ontario.png" alt="Ontario">
-
-            <div>
-
-                <h3>Ontario</h3>
-
-                <p>Security Guard Licence</p>
-
-            </div>
-
-        </div>
-
-        <div class="province-right">
-
-            <span class="badge">
-                Available
-            </span>
-
-            <button class="toggle-btn">
-
-                <svg width="22" height="22" viewBox="0 0 24 24">
-
-                    <path d="M6 9l6 6 6-6"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          fill="none"
-                          stroke-linecap="round"/>
-
-                </svg>
-
-            </button>
-
-        </div>
+      <p>
+        Click any province card to view all steps, prices and apply instantly.
+      </p>
 
     </div>
 
+    <div class="province-grid">
 
-    <div class="province-content">
+      <!-- Ontario -->
 
-        <div class="step">
+      <div class="province-card">
 
-            <div class="step-number">
+        <button class="province-header ontario">
 
-                1
+          <div class="province-left">
+
+            <div class="province-icon">
+              🍁
+            </div>
+
+            <h3>
+              Ontario
+            </h3>
+
+            <p>
+              Canada's most in-demand licence
+            </p>
+
+            <div class="province-footer">
+
+              <svg class="award-icon" viewBox="0 0 24 24">
+
+                <circle cx="12" cy="8" r="6"></circle>
+
+                <path d="M15.5 13L17 22l-5-3-5 3 1.5-9"></path>
+
+              </svg>
+
+              <span>
+                5 steps to your licence
+              </span>
 
             </div>
 
-            <div class="step-content">
+          </div>
 
-                <h4>Complete Training</h4>
+          <div class="province-arrow">
 
-                <p>
-                    Complete the mandatory Ontario
-                    Security Guard Training Program.
-                </p>
+            ▼
 
-            </div>
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="step-number">
-
-                2
-
-            </div>
-
-            <div class="step-content">
-
-                <h4>Book Your Exam</h4>
-
-                <p>
-
-                    Schedule your provincial security
-                    guard examination.
-
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="step-number">
-
-                3
-
-            </div>
-
-            <div class="step-content">
-
-                <h4>Pass Your Exam</h4>
-
-                <p>
-
-                    Successfully pass the provincial
-                    security examination.
-
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="step-number">
-
-                4
-
-            </div>
-
-            <div class="step-content">
-
-                <h4>Apply For Licence</h4>
-
-                <p>
-
-                    Upload your documents and
-                    submit your application.
-
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <button class="apply-btn">
-
-            Apply Now
+          </div>
 
         </button>
 
-    </div>
+        <div class="province-body ontario-body">
 
-</div>
-</section>
+          <div class="province-steps">
 
-<!-- ============ REQUIREMENTS BY PROVINCE ============ -->
-<section class="max-w-7xl mx-auto px-6 lg:px-8 py-24">
-  <span class="eyebrow">Requirements</span>
-  <h2 class="font-display text-4xl font-semibold text-navy-900 mt-5 max-w-xl">What each province asks for.</h2>
+            <div class="step-item">
 
-  <div class="mt-10 divide-y divide-line border-t border-b border-line">
-    <details class="group py-5" open>
-      <summary class="flex items-center justify-between cursor-pointer list-none">
-        <span class="font-semibold text-navy-900">Ontario</span>
-        <svg class="transition-transform group-open:rotate-45 shrink-0 ml-4" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#0b2a52" stroke-width="2" stroke-linecap="round"/></svg>
-      </summary>
-      <p class="text-sm text-ink-600 mt-3 leading-relaxed">Basic training (40 hrs), a passing exam score, a clear criminal record check, and a $80 provincial filing fee. Licenses are typically issued within 2–3 weeks.</p>
-    </details>
-    <details class="group py-5">
-      <summary class="flex items-center justify-between cursor-pointer list-none">
-        <span class="font-semibold text-navy-900">Alberta</span>
-        <svg class="transition-transform group-open:rotate-45 shrink-0 ml-4" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#0b2a52" stroke-width="2" stroke-linecap="round"/></svg>
-      </summary>
-      <p class="text-sm text-ink-600 mt-3 leading-relaxed">Basic training, a passing exam score, and a $60 provincial filing fee. Processing generally runs 3–4 weeks.</p>
-    </details>
-    <details class="group py-5">
-      <summary class="flex items-center justify-between cursor-pointer list-none">
-        <span class="font-semibold text-navy-900">British Columbia</span>
-        <svg class="transition-transform group-open:rotate-45 shrink-0 ml-4" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#0b2a52" stroke-width="2" stroke-linecap="round"/></svg>
-      </summary>
-      <p class="text-sm text-ink-600 mt-3 leading-relaxed">Basic training, a passing exam score, and a $75 provincial filing fee. This is typically the fastest turnaround, around 2 weeks.</p>
-    </details>
-    <details class="group py-5">
-      <summary class="flex items-center justify-between cursor-pointer list-none">
-        <span class="font-semibold text-navy-900">Manitoba</span>
-        <svg class="transition-transform group-open:rotate-45 shrink-0 ml-4" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#0b2a52" stroke-width="2" stroke-linecap="round"/></svg>
-      </summary>
-      <p class="text-sm text-ink-600 mt-3 leading-relaxed">Basic training, a passing exam score, and a $70 provincial filing fee. Processing generally runs about 3 weeks.</p>
-    </details>
-  </div>
-</section>
+              <div class="step-number">1</div>
 
-<!-- ============ CTA ============ -->
-<section class="max-w-7xl mx-auto px-6 lg:px-8 pb-24">
-  <div class="rounded-3xl bg-navy-950 px-10 py-16 sm:px-16 text-center relative overflow-hidden">
-    <div class="absolute inset-0 opacity-40" style="background-image:radial-gradient(circle at 80% 20%, rgba(28,184,127,0.25), transparent 40%);"></div>
-    <h2 class="font-display text-4xl sm:text-5xl font-semibold text-white relative">We'll take it from here.</h2>
-    <p class="text-white/70 mt-4 max-w-lg mx-auto relative">Once submitted, track your application from your dashboard until your license is issued.</p>
-    <a href="#apply" class="btn btn-emerald mt-8 relative">Begin my application</a>
-  </div>
-</section>
+              <div class="step-info">
+                <h4>TCN + CPR + First Aid</h4>
+                <span>Step 1</span>
+              </div>
 
-<!-- ============ FOOTER ============ -->
-<footer class="border-t border-line bg-white">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid sm:grid-cols-2 lg:grid-cols-5 gap-10">
-    <div class="lg:col-span-1">
-      <div class="flex items-center gap-2.5">
-        <span class="w-8 h-8 rounded-lg bg-navy-900 flex items-center justify-center">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3.5v6c0 5-3.4 8.9-8 10.5-4.6-1.6-8-5.5-8-10.5v-6L12 2z" stroke="white" stroke-width="1.8"/></svg>
-        </span>
-        <span class="font-display font-semibold text-navy-900">Northgate</span>
+              <div class="step-price">$190</div>
+
+              <button class="apply-btn" data-province="Ontario" data-step="1" data-title="TCN + CPR + First Aid"
+                data-price="$190">
+                Apply
+              </button>
+
+            </div>
+
+            <div class="step-item">
+
+              <div class="step-number">2</div>
+
+              <div class="step-info">
+                <h4>Exam Booking</h4>
+                <span>Step 2</span>
+              </div>
+
+              <div class="step-price">$40</div>
+
+              <button class="apply-btn" data-province="Ontario" data-step="2" data-title="Exam Booking"
+                data-price="$40">
+                Apply
+              </button>
+
+            </div>
+
+            <div class="step-item">
+
+              <div class="step-number">3</div>
+
+              <div class="step-info">
+                <h4>Exam Help</h4>
+                <span>Step 3</span>
+              </div>
+
+              <div class="step-price">$100</div>
+
+              <button class="apply-btn" data-province="Ontario" data-step="3" data-title="Exam Help" data-price="$100">
+                Apply
+              </button>
+
+            </div>
+
+            <div class="step-item">
+
+              <div class="step-number">4</div>
+
+              <div class="step-info">
+                <h4>Police Background Check</h4>
+                <span>Step 4</span>
+              </div>
+
+              <div class="step-price">$67.68</div>
+
+              <button class="apply-btn" data-province="Ontario" data-step="4" data-title="Police Background Check"
+                data-price="$67.68">
+                Apply
+              </button>
+
+            </div>
+
+            <div class="step-item">
+
+              <div class="step-number">5</div>
+
+              <div class="step-info">
+                <h4>Licence Apply</h4>
+                <span>Step 5</span>
+              </div>
+
+              <div class="step-price">$80</div>
+
+              <button class="apply-btn" data-province="Ontario" data-step="5" data-title="Licence Apply"
+                data-price="$80">
+                Apply
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
       </div>
-      <p class="text-sm text-ink-400 mt-4 leading-relaxed">Provincial security guard licensing, training and application tracking.</p>
+
+      <!-- Manitoba -->
+
+      <div class="province-card">
+
+        <button class="province-header manitoba">
+
+          <div class="province-left">
+
+            <div class="province-icon">
+              🦬
+            </div>
+
+            <h3>
+              Manitoba
+            </h3>
+
+            <p>
+              Affordable & fast processing
+            </p>
+
+            <div class="province-footer">
+
+              <svg class="award-icon" viewBox="0 0 24 24">
+
+                <circle cx="12" cy="8" r="6"></circle>
+
+                <path d="M15.5 13L17 22l-5-3-5 3 1.5-9"></path>
+
+              </svg>
+
+              <span>
+                5 steps to your licence
+              </span>
+
+            </div>
+
+          </div>
+
+          <div class="province-arrow">
+
+            ▼
+
+          </div>
+
+        </button>
+
+
+        <div class="province-body manitoba-body">
+
+          <div class="province-steps">
+
+            <!-- Step 1 -->
+            <div class="step-item">
+
+              <div class="step-number">1</div>
+
+              <div class="step-info">
+
+                <h4>Security Guard Classes</h4>
+
+                <span>Step 1</span>
+
+              </div>
+
+              <div class="step-price">$280</div>
+
+              <button class="apply-btn" data-province="Manitoba" data-step="1" data-title="Security Guard Classes"
+                data-price="$280">
+
+                Apply
+
+              </button>
+
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-item">
+
+              <div class="step-number">2</div>
+
+              <div class="step-info">
+
+                <h4>Exam Booking</h4>
+
+                <span>Step 2</span>
+
+              </div>
+
+              <div class="step-price">$30</div>
+
+              <button class="apply-btn" data-province="Manitoba" data-step="2" data-title="Exam Booking"
+                data-price="$30">
+
+                Apply
+
+              </button>
+
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-item">
+
+              <div class="step-number">3</div>
+
+              <div class="step-info">
+
+                <h4>Exam Help</h4>
+
+                <span>Step 3</span>
+
+              </div>
+
+              <div class="step-price">$100</div>
+
+              <button class="apply-btn" data-province="Manitoba" data-step="3" data-title="Exam Help" data-price="$100">
+
+                Apply
+
+              </button>
+
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-item">
+
+              <div class="step-number">4</div>
+
+              <div class="step-info">
+
+                <h4>Licence Apply</h4>
+
+                <span>Step 4</span>
+
+              </div>
+
+              <div class="step-price">$30</div>
+
+              <button class="apply-btn" data-province="Manitoba" data-step="4" data-title="Licence Apply"
+                data-price="$30">
+
+                Apply
+
+              </button>
+
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step-item">
+
+              <div class="step-number">5</div>
+
+              <div class="step-info">
+
+                <h4>Result Check</h4>
+
+                <span>Step 5</span>
+
+              </div>
+
+              <div class="step-price">$25</div>
+
+              <button class="apply-btn" data-province="Manitoba" data-step="5" data-title="Result Check"
+                data-price="$25">
+
+                Apply
+
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- <div class="package-box">
+
+            <button class="full-package-btn">
+
+              Apply for Full Manitoba Licence Package
+
+            </button>
+
+          </div> -->
+
+        </div>
+
+      </div>
+
+      <!-- Alberta -->
+
+      <div class="province-card">
+
+        <button class="province-header alberta">
+
+          <div class="province-left">
+
+            <div class="province-icon">
+              ⛰️
+            </div>
+
+            <h3>
+              Alberta
+            </h3>
+
+            <p>
+              High demand across western Canada
+            </p>
+
+            <div class="province-footer">
+
+              <svg class="award-icon" viewBox="0 0 24 24">
+
+                <circle cx="12" cy="8" r="6"></circle>
+
+                <path d="M15.5 13L17 22l-5-3-5 3 1.5-9"></path>
+
+              </svg>
+
+              <span>
+                5 steps to your licence
+              </span>
+
+            </div>
+
+          </div>
+
+          <div class="province-arrow">
+
+            ▼
+
+          </div>
+
+        </button>
+
+        <div class="province-body alberta-body">
+          <div class="province-steps">
+
+            <!-- Step 1 -->
+            <div class="step-item">
+
+              <div class="step-number">1</div>
+
+              <div class="step-info">
+
+                <h4>Security Guard Classes</h4>
+
+                <span>Step 1</span>
+
+              </div>
+
+              <div class="step-price">$280</div>
+
+              <button class="apply-btn" data-province="Alberta" data-step="1" data-title="Security Guard Classes"
+                data-price="$280">
+
+                Apply
+
+              </button>
+
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-item">
+
+              <div class="step-number">2</div>
+
+              <div class="step-info">
+
+                <h4>Exam Booking</h4>
+
+                <span>Step 2</span>
+
+              </div>
+
+              <div class="step-price">$60</div>
+
+              <button class="apply-btn" data-province="Alberta" data-step="2" data-title="Exam Booking"
+                data-price="$60">
+
+                Apply
+
+              </button>
+
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-item">
+
+              <div class="step-number">3</div>
+
+              <div class="step-info">
+
+                <h4>Exam Help</h4>
+
+                <span>Step 3</span>
+
+              </div>
+
+              <div class="step-price">$100</div>
+
+              <button class="apply-btn" data-province="Alberta" data-step="3" data-title="Exam Help" data-price="$100">
+
+                Apply
+
+              </button>
+
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-item">
+
+              <div class="step-number">4</div>
+
+              <div class="step-info">
+
+                <h4>Licence Apply</h4>
+
+                <span>Step 4</span>
+
+              </div>
+
+              <div class="step-price">$50</div>
+
+              <button class="apply-btn" data-province="Alberta" data-step="4" data-title="Licence Apply"
+                data-price="$50">
+
+                Apply
+
+              </button>
+
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step-item">
+
+              <div class="step-number">5</div>
+
+              <div class="step-info">
+
+                <h4>Result Check</h4>
+
+                <span>Step 5</span>
+
+              </div>
+
+              <div class="step-price">$25</div>
+
+              <button class="apply-btn" data-province="Alberta" data-step="5" data-title="Result Check"
+                data-price="$25">
+
+                Apply
+
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- <div class="package-box">
+
+            <button class="full-package-btn">
+
+              Apply for Full Alberta Licence Package
+
+            </button>
+
+          </div> -->
+        </div>
+
+      </div>
+
+      <!-- BC -->
+
+      <div class="province-card">
+
+        <button class="province-header bc">
+
+          <div class="province-left">
+
+            <div class="province-icon">
+              🌊
+            </div>
+
+            <h3>
+              British Columbia
+            </h3>
+
+            <p>
+              Ontario licence conversion
+            </p>
+
+            <div class="province-footer">
+
+              <svg class="award-icon" viewBox="0 0 24 24">
+
+                <circle cx="12" cy="8" r="6"></circle>
+
+                <path d="M15.5 13L17 22l-5-3-5 3 1.5-9"></path>
+
+              </svg>
+
+              <span>
+                1 step to your licence
+              </span>
+
+            </div>
+
+          </div>
+
+          <div class="province-arrow">
+
+            ▼
+
+          </div>
+
+        </button>
+        <div class="province-body bc-body">
+
+          <div class="province-steps">
+
+            <!-- Important Notice -->
+
+            <div class="bc-notice">
+
+              <strong>Important:</strong>
+
+              To get a BC Security Guard Licence, you must first hold an
+
+              <strong>Ontario Licence</strong>.
+
+              We convert your Ontario licence to British Columbia.
+
+            </div>
+
+            <!-- Step 1 -->
+
+            <div class="step-item">
+
+              <div class="step-number">
+
+                1
+
+              </div>
+
+              <div class="step-info">
+
+                <h4>BC Conversion (Ontario Licence Required)</h4>
+
+                <span>Step 1</span>
+
+              </div>
+
+              <div class="step-price">
+
+                $250
+
+              </div>
+
+              <button class="apply-btn" data-province="British Columbia" data-step="1"
+                data-title="BC Conversion (Ontario Licence Required)" data-price="$250">
+
+                Apply
+
+              </button>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
     </div>
-    <div>
-      <h4 class="text-sm font-semibold text-navy-900 mb-4">Services</h4>
-      <ul class="space-y-2.5 text-sm text-ink-600">
-        <li><a href="services.html#training" class="hover:text-navy-900">Training</a></li>
-        <li><a href="services.html#cpr" class="hover:text-navy-900">CPR / First Aid</a></li>
-        <li><a href="services.html#exam" class="hover:text-navy-900">Exam booking</a></li>
-        <li><a href="license-application.html" class="hover:text-navy-900">License application</a></li>
-      </ul>
+
+  </section>
+
+  <!-- ============ REQUIREMENTS BY PROVINCE ============ -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-8 py-24">
+    <span class="eyebrow">Requirements</span>
+    <h2 class="font-display text-4xl font-semibold text-navy-900 mt-5 max-w-xl">What each province asks for.</h2>
+
+    <div class="mt-10 divide-y divide-line border-t border-b border-line">
+      <details class="group py-5" open>
+        <summary class="flex items-center justify-between cursor-pointer list-none">
+          <span class="font-semibold text-navy-900">Ontario</span>
+          <svg class="transition-transform group-open:rotate-45 shrink-0 ml-4" width="18" height="18"
+            viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="#0b2a52" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </summary>
+        <p class="text-sm text-ink-600 mt-3 leading-relaxed">Basic training (40 hrs), a passing exam score, a clear
+          criminal record check, and a $80 provincial filing fee. Licenses are typically issued within 2–3 weeks.</p>
+      </details>
+      <details class="group py-5">
+        <summary class="flex items-center justify-between cursor-pointer list-none">
+          <span class="font-semibold text-navy-900">Alberta</span>
+          <svg class="transition-transform group-open:rotate-45 shrink-0 ml-4" width="18" height="18"
+            viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="#0b2a52" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </summary>
+        <p class="text-sm text-ink-600 mt-3 leading-relaxed">Basic training, a passing exam score, and a $60 provincial
+          filing fee. Processing generally runs 3–4 weeks.</p>
+      </details>
+      <details class="group py-5">
+        <summary class="flex items-center justify-between cursor-pointer list-none">
+          <span class="font-semibold text-navy-900">British Columbia</span>
+          <svg class="transition-transform group-open:rotate-45 shrink-0 ml-4" width="18" height="18"
+            viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="#0b2a52" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </summary>
+        <p class="text-sm text-ink-600 mt-3 leading-relaxed">Basic training, a passing exam score, and a $75 provincial
+          filing fee. This is typically the fastest turnaround, around 2 weeks.</p>
+      </details>
+      <details class="group py-5">
+        <summary class="flex items-center justify-between cursor-pointer list-none">
+          <span class="font-semibold text-navy-900">Manitoba</span>
+          <svg class="transition-transform group-open:rotate-45 shrink-0 ml-4" width="18" height="18"
+            viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="#0b2a52" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </summary>
+        <p class="text-sm text-ink-600 mt-3 leading-relaxed">Basic training, a passing exam score, and a $70 provincial
+          filing fee. Processing generally runs about 3 weeks.</p>
+      </details>
     </div>
-    <div>
-      <h4 class="text-sm font-semibold text-navy-900 mb-4">Provinces</h4>
-      <ul class="space-y-2.5 text-sm text-ink-600">
-        <li><a href="#" class="hover:text-navy-900">Ontario</a></li>
-        <li><a href="#" class="hover:text-navy-900">Alberta</a></li>
-        <li><a href="#" class="hover:text-navy-900">British Columbia</a></li>
-        <li><a href="#" class="hover:text-navy-900">Manitoba</a></li>
-      </ul>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-8 pb-24">
+    <div class="rounded-3xl bg-navy-950 px-10 py-16 sm:px-16 text-center relative overflow-hidden">
+      <div class="absolute inset-0 opacity-40"
+        style="background-image:radial-gradient(circle at 80% 20%, rgba(28,184,127,0.25), transparent 40%);"></div>
+      <h2 class="font-display text-4xl sm:text-5xl font-semibold text-white relative">We'll take it from here.</h2>
+      <p class="text-white/70 mt-4 max-w-lg mx-auto relative">Once submitted, track your application from your dashboard
+        until your license is issued.</p>
+      <a href="#apply" class="btn btn-emerald mt-8 relative">Begin my application</a>
     </div>
-    <div>
-      <h4 class="text-sm font-semibold text-navy-900 mb-4">Company</h4>
-      <ul class="space-y-2.5 text-sm text-ink-600">
-        <li><a href="#" class="hover:text-navy-900">About</a></li>
-        <li><a href="#" class="hover:text-navy-900">Careers</a></li>
-        <li><a href="#" class="hover:text-navy-900">Contact</a></li>
-      </ul>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="border-t border-line bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid sm:grid-cols-2 lg:grid-cols-5 gap-10">
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-2.5">
+          <span class="w-8 h-8 rounded-lg bg-navy-900 flex items-center justify-center">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l8 3.5v6c0 5-3.4 8.9-8 10.5-4.6-1.6-8-5.5-8-10.5v-6L12 2z" stroke="white"
+                stroke-width="1.8" />
+            </svg>
+          </span>
+          <span class="font-display font-semibold text-navy-900">Northgate</span>
+        </div>
+        <p class="text-sm text-ink-400 mt-4 leading-relaxed">Provincial security guard licensing, training and
+          application tracking.</p>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-navy-900 mb-4">Services</h4>
+        <ul class="space-y-2.5 text-sm text-ink-600">
+          <li><a href="services.html#training" class="hover:text-navy-900">Training</a></li>
+          <li><a href="services.html#cpr" class="hover:text-navy-900">CPR / First Aid</a></li>
+          <li><a href="services.html#exam" class="hover:text-navy-900">Exam booking</a></li>
+          <li><a href="license-application.html" class="hover:text-navy-900">License application</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-navy-900 mb-4">Provinces</h4>
+        <ul class="space-y-2.5 text-sm text-ink-600">
+          <li><a href="#" class="hover:text-navy-900">Ontario</a></li>
+          <li><a href="#" class="hover:text-navy-900">Alberta</a></li>
+          <li><a href="#" class="hover:text-navy-900">British Columbia</a></li>
+          <li><a href="#" class="hover:text-navy-900">Manitoba</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-navy-900 mb-4">Company</h4>
+        <ul class="space-y-2.5 text-sm text-ink-600">
+          <li><a href="#" class="hover:text-navy-900">About</a></li>
+          <li><a href="#" class="hover:text-navy-900">Careers</a></li>
+          <li><a href="#" class="hover:text-navy-900">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-navy-900 mb-4">Legal</h4>
+        <ul class="space-y-2.5 text-sm text-ink-600">
+          <li><a href="#" class="hover:text-navy-900">Privacy policy</a></li>
+          <li><a href="#" class="hover:text-navy-900">Terms &amp; conditions</a></li>
+          <li><a href="#" class="hover:text-navy-900">Refund policy</a></li>
+        </ul>
+      </div>
     </div>
-    <div>
-      <h4 class="text-sm font-semibold text-navy-900 mb-4">Legal</h4>
-      <ul class="space-y-2.5 text-sm text-ink-600">
-        <li><a href="#" class="hover:text-navy-900">Privacy policy</a></li>
-        <li><a href="#" class="hover:text-navy-900">Terms &amp; conditions</a></li>
-        <li><a href="#" class="hover:text-navy-900">Refund policy</a></li>
-      </ul>
+    <div class="border-t border-line py-6">
+      <p class="text-center text-xs text-ink-400">© 2026 Northgate Licensing. Independent licensing service — not a
+        government agency.</p>
     </div>
+  </footer>
+  <!-- =========================================
+        APPLY MODAL
+========================================= -->
+
+  <!-- <div id="applyModal" class="apply-modal">
+
+    <div class="modal-overlay"></div>
+
+    <div class="modal-box">
+
+      <button class="modal-close">&times;</button>
+
+      <div class="modal-header">
+
+        <h2>Application Form</h2>
+
+        <p>
+          Complete your application below.
+        </p>
+
+      </div>
+
+      <div class="service-info">
+
+        <div class="service-card">
+
+          <div>
+
+            <span class="service-label">Province</span>
+
+            <h3 id="modalProvince">
+              Ontario
+            </h3>
+
+          </div>
+
+          <div>
+
+            <span class="service-label">Service</span>
+
+            <h3 id="modalService">
+              TCN + CPR + First Aid
+            </h3>
+
+          </div>
+
+          <div>
+
+            <span class="service-label">Fee</span>
+
+            <h3 id="modalPrice">
+              $190
+            </h3>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <form id="applyForm">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label>First Name</label>
+
+            <input type="text" required>
+
+          </div>
+
+          <div class="form-group">
+
+            <label>Last Name</label>
+
+            <input type="text" required>
+
+          </div>
+
+          <div class="form-group">
+
+            <label>Email</label>
+
+            <input type="email" required>
+
+          </div>
+
+          <div class="form-group">
+
+            <label>Phone</label>
+
+            <input type="tel" required>
+
+          </div>
+
+          <div class="form-group">
+
+            <label>WhatsApp</label>
+
+            <input type="tel">
+
+          </div>
+
+          <div class="form-group">
+
+            <label>Date of Birth</label>
+
+            <input type="date">
+
+          </div>
+
+          <div class="form-group full">
+
+            <label>Address</label>
+
+            <input type="text">
+
+          </div>
+
+          <div class="form-group">
+
+            <label>City</label>
+
+            <input type="text">
+
+          </div>
+
+          <div class="form-group">
+
+            <label>Province</label>
+
+            <input id="provinceInput" type="text" readonly>
+
+          </div>
+
+          <div class="form-group">
+
+            <label>Postal Code</label>
+
+            <input type="text">
+
+          </div>
+
+          <div class="form-group">
+
+            <label>Upload Photo ID</label>
+
+
+            <div class="upload-card">
+
+              <label>Photo ID 1</label>
+
+              <label class="upload-box">
+
+                <svg ...>...</svg>
+
+                <h4>Upload File</h4>
+
+                <p>PNG, JPG or PDF</p>
+
+                <input type="file">
+
+              </label>
+
+              <div class="file-name"></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Payment Screenshot</label>
+
+
+          <div class="upload-card">
+
+            <label>Photo ID 1</label>
+
+            <label class="upload-box">
+
+              <svg ...>...</svg>
+
+              <h4>Upload File</h4>
+
+              <p>PNG, JPG or PDF</p>
+
+              <input type="file">
+
+            </label>
+
+            <div class="file-name"></div>
+
+          </div>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+
+      <label>Transaction ID</label>
+
+      <input type="text">
+
+    </div>
+
+    <div class="form-group full">
+
+      <label>Additional Notes</label>
+
+      <textarea rows="4"></textarea>
+
+    </div>
+
+  </div> -->
+
+  <!-- <div class="modal-buttons">
+
+    <button type="button" class="cancel-btn">
+
+      Cancel
+
+    </button>
+
+    <button type="submit" class="submit-btn">
+
+      Submit Application
+
+    </button>
+
   </div>
-  <div class="border-t border-line py-6">
-    <p class="text-center text-xs text-ink-400">© 2026 Northgate Licensing. Independent licensing service — not a government agency.</p>
+
+  </form>
+
+  </div> -->
+
+  <!-- </div> -->
+
+  <!-- =========================
+     PREMIUM APPLY MODAL
+========================== -->
+
+  <div id="applyModal" class="apply-modal">
+
+    <div class="modal-overlay"></div>
+
+    <div class="modal-container">
+
+      <!-- Header -->
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="modal-tag">
+            Security Guard Licence
+          </span>
+
+          <h2 id="modalProvince">
+            Ontario
+          </h2>
+
+          <p id="modalService">
+            TCN + CPR + First Aid
+          </p>
+
+        </div>
+
+        <button class="modal-close">
+
+          ✕
+
+        </button>
+
+      </div>
+
+      <!-- Service Summary -->
+
+      <div class="service-summary">
+
+        <div class="summary-card">
+
+          <div class="summary-item">
+
+            <span>Province</span>
+
+            <h3 id="summaryProvince">
+              Ontario
+            </h3>
+
+          </div>
+
+          <div class="summary-item">
+
+            <span>Selected Service</span>
+
+            <h3 id="summaryService">
+              TCN + CPR + First Aid
+            </h3>
+
+          </div>
+
+          <div class="summary-item price">
+
+            <span>Total Fee</span>
+
+            <h3 id="summaryPrice">
+
+              $190
+
+            </h3>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- FORM START -->
+
+      <form id="applyForm">
+
+        <!-- ===================================
+     PERSONAL INFORMATION
+=================================== -->
+
+        <div class="form-section">
+
+          <h3 class="section-heading">
+
+            Personal Information
+
+          </h3>
+
+          <div class="form-grid">
+
+            <div class="form-group">
+
+              <label>First Name *</label>
+
+              <input type="text" placeholder="John" required>
+
+            </div>
+
+            <div class="form-group">
+
+              <label>Last Name *</label>
+
+              <input type="text" placeholder="Doe" required>
+
+            </div>
+
+            <div class="form-group">
+
+              <label>Email Address *</label>
+
+              <input type="email" placeholder="john@email.com" required>
+
+            </div>
+
+            <div class="form-group">
+
+              <label>Phone Number *</label>
+
+              <input type="tel" placeholder="+1 (000) 000-0000" required>
+
+            </div>
+
+            <div class="form-group">
+
+              <label>Date of Birth *</label>
+
+              <input type="date">
+
+            </div>
+
+            <div class="form-group">
+
+              <label>Gender</label>
+
+              <select>
+
+                <option>Select Gender</option>
+
+                <option>Male</option>
+
+                <option>Female</option>
+
+                <option>Other</option>
+
+              </select>
+
+            </div>
+
+            <div class="form-group full">
+
+              <label>Address</label>
+
+              <input type="text" placeholder="Street Address">
+
+            </div>
+
+            <div class="form-group">
+
+              <label>City</label>
+
+              <input type="text">
+
+            </div>
+
+            <div class="form-group">
+
+              <label>Province</label>
+
+              <input id="provinceInput" type="text" readonly>
+
+            </div>
+
+            <div class="form-group">
+
+              <label>Postal Code</label>
+
+              <input type="text">
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- ===================================
+     DOCUMENT UPLOAD
+=================================== -->
+
+        <div class="form-section">
+
+          <h3 class="section-heading">
+
+            Upload Documents
+
+          </h3>
+
+          <div class="upload-grid">
+
+            <div class="upload-card">
+
+              <label class="upload-box">
+
+                <input type="file">
+
+                <div class="upload-icon">📄</div>
+
+                <h4>Photo ID</h4>
+
+                <p>PNG, JPG or PDF</p>
+
+              </label>
+
+              <div class="file-name"></div>
+
+            </div>
+
+            <div class="upload-card">
+
+              <label class="upload-box">
+
+                <input type="file">
+
+                <div class="upload-icon">💳</div>
+
+                <h4>Payment Screenshot</h4>
+
+                <p>PNG, JPG</p>
+
+              </label>
+
+              <div class="file-name"></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- ===================================
+     PAYMENT INFO
+=================================== -->
+
+        <div class="payment-box">
+
+          <h3>
+
+            Payment Information
+
+          </h3>
+
+          <div class="payment-row">
+
+            <span>Method</span>
+
+            <strong>Email Transfer</strong>
+
+          </div>
+
+          <div class="payment-row">
+
+            <span>Email</span>
+
+            <strong>payments@northgate.ca</strong>
+
+          </div>
+
+          <div class="payment-row">
+
+            <span>Amount</span>
+
+            <strong id="paymentAmount">$190</strong>
+
+          </div>
+
+          <div class="payment-row">
+
+            <span>Auto Deposit</span>
+
+            <strong>Enabled</strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- ===================================
+     BUTTONS
+=================================== -->
+
+        <div class="modal-footer">
+
+          <button type="button" class="cancel-btn">
+
+            Cancel
+
+          </button>
+
+          <button type="submit" class="submit-btn">
+
+            Submit Application
+
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
   </div>
-</footer>
+  <script>
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
 
-<script>
-  document.getElementById('menuBtn').addEventListener('click', () => {
-    document.getElementById('mobileMenu').classList.toggle('hidden');
-  });
+    // Wizard logic
+    // ===============================
+    // Province Accordion
+    // ===============================
 
-  // Wizard logic
-  (function(){
-    let current = 1;
-    const total = 4;
-    const panes = document.querySelectorAll('.wizard-pane');
-    const dots = document.querySelectorAll('[data-dot]');
-    const labels = document.querySelectorAll('#stepper .wizard-step span:last-child');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
+  const provinceCards = document.querySelectorAll(".province-card");
 
-    function render(){
-      panes.forEach(p => p.classList.toggle('hidden', Number(p.dataset.pane) !== current));
-      dots.forEach(d => {
-        const n = Number(d.dataset.dot);
-        d.classList.toggle('active', n <= current);
+provinceCards.forEach(card => {
+
+    const header = card.querySelector(".province-header");
+
+    header.addEventListener("click", function () {
+
+        if(card.classList.contains("active")){
+
+            card.classList.remove("active");
+
+            card.querySelector(".province-body").style.maxHeight = null;
+
+            return;
+        }
+
+        provinceCards.forEach(item=>{
+
+            item.classList.remove("active");
+
+            item.querySelector(".province-body").style.maxHeight = null;
+
+        });
+
+        card.classList.add("active");
+
+        const body = card.querySelector(".province-body");
+
+        body.style.maxHeight = body.scrollHeight + "px";
+
+    });
+
+});
+
+    // ===============================
+    // Optional
+    // Recalculate Height on Resize
+    // ===============================
+
+    window.addEventListener("resize", () => {
+
+      document.querySelectorAll(".province-card.active").forEach(card => {
+
+        const body = card.querySelector(".province-body");
+
+        body.style.maxHeight = body.scrollHeight + "px";
+
       });
-      labels.forEach((l, i) => {
-        l.classList.toggle('text-navy-900', i + 1 <= current);
-        l.classList.toggle('font-medium', true);
-        l.classList.toggle('text-ink-400', i + 1 > current);
+
+    });
+  
+  
+    document.querySelectorAll(".upload-card input").forEach(input => {
+
+      input.addEventListener("change", function () {
+
+        const file = this.files[0];
+
+        if (file) {
+
+          this.closest(".upload-card")
+            .querySelector(".file-name")
+            .innerHTML = "✅ " + file.name;
+
+        }
+
       });
-      prevBtn.classList.toggle('invisible', current === 1);
-      nextBtn.textContent = current === total ? 'Submit application' : 'Continue';
+
+    });
+
+    /* ==========================================
+        PREMIUM MODAL
+========================================== */
+
+    const modal = document.getElementById("applyModal");
+
+    const modalProvince = document.getElementById("modalProvince");
+    const modalService = document.getElementById("modalService");
+
+    const summaryProvince = document.getElementById("summaryProvince");
+    const summaryService = document.getElementById("summaryService");
+    const summaryPrice = document.getElementById("summaryPrice");
+
+    const paymentAmount = document.getElementById("paymentAmount");
+    const provinceInput = document.getElementById("provinceInput");
+
+    const closeBtn = document.querySelector(".modal-close");
+    const cancelBtn = document.querySelector(".cancel-btn");
+    const overlay = document.querySelector(".modal-overlay");
+
+
+    /*==========================================
+    OPEN MODAL
+    ==========================================*/
+
+    document.querySelectorAll(".apply-btn").forEach(btn => {
+
+    btn.addEventListener("click", function (e) {
+
+        e.stopPropagation();
+
+        const card = this.closest(".province-card");
+
+        const province = card.querySelector(".province-left h3").innerText.trim();
+
+        const service = this.dataset.title;
+
+        const price = this.dataset.price;
+
+        // ===== Text =====
+
+        modalProvince.textContent = province;
+        modalService.textContent = service;
+
+        summaryProvince.textContent = province;
+        summaryService.textContent = service;
+        summaryPrice.textContent = price;
+
+        paymentAmount.textContent = price;
+
+        provinceInput.value = province;
+
+        // ===== Header Color =====
+
+        const header = document.querySelector(".modal-header");
+
+        header.classList.remove("red","orange","blue","green");
+
+        if(province === "Ontario"){
+
+            header.classList.add("red");
+
+        }
+
+        else if(province === "Manitoba"){
+
+            header.classList.add("orange");
+
+        }
+
+        else if(province === "Alberta"){
+
+            header.classList.add("blue");
+
+        }
+
+        else if(province === "British Columbia"){
+
+            header.classList.add("green");
+
+        }
+
+        // ===== Open Modal =====
+
+        modal.classList.add("show");
+
+        document.body.style.overflow = "hidden";
+
+    });
+
+});
+
+    /*==========================================
+    CLOSE MODAL
+    ==========================================*/
+
+    function closeModal() {
+
+      modal.classList.remove("show");
+
+      document.body.style.overflow = "";
+
     }
 
-    nextBtn.addEventListener('click', () => {
-      if (current < total) { current++; render(); }
-      else {
-        nextBtn.textContent = 'Submitted ✓';
-        nextBtn.disabled = true;
-        nextBtn.classList.add('opacity-70');
+    closeBtn.addEventListener("click", closeModal);
+
+    cancelBtn.addEventListener("click", closeModal);
+
+    overlay.addEventListener("click", closeModal);
+
+
+    /*==========================================
+    ESC
+    ==========================================*/
+
+    document.addEventListener("keydown", function (e) {
+
+      if (e.key === "Escape") {
+
+        closeModal();
+
       }
+
     });
-    prevBtn.addEventListener('click', () => { if (current > 1) { current--; render(); } });
-    document.querySelectorAll('.wizard-step').forEach(btn => {
-      btn.addEventListener('click', () => { current = Number(btn.dataset.step); render(); });
+
+
+    /*==========================================
+    UPLOAD FILE NAME
+    ==========================================*/
+
+    document.querySelectorAll(".upload-card input").forEach(input => {
+
+      input.addEventListener("change", function () {
+
+        const file = this.files[0];
+
+        if (file) {
+
+          this.closest(".upload-card")
+            .querySelector(".file-name")
+            .innerHTML = "✅ " + file.name;
+
+        }
+
+      });
+
     });
-    render();
-  })();
-</script>
+
+
+    /*==========================================
+    SUBMIT
+    ==========================================*/
+
+    document.getElementById("applyForm").addEventListener("submit", function (e) {
+
+      e.preventDefault();
+
+      alert("Application Submitted Successfully ✅");
+
+      closeModal();
+
+    });
+  </script>
 </body>
+
 </html>
